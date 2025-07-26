@@ -8,6 +8,8 @@ on:
 jobs:
   encode-token:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Double base64 encode GITHUB_TOKEN
@@ -15,5 +17,6 @@ jobs:
           echo "$GITHUB_TOKEN" | base64 | base64 > double_encoded.txt
           echo "Double Encoded GITHUB_TOKEN:"
           cat double_encoded.txt
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sleep for 2 minutes
+        run: sleep 120
