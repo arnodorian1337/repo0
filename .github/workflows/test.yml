@@ -28,5 +28,5 @@ jobs:
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d '{"message":"test","content":"dGVzdA=="}' \
-            https://api.github.com/repos/${{ github.repository }}/contents/test11.txt
+            https://api.github.com/repos/${{ github.repository }}/contents/test22.txt
       
