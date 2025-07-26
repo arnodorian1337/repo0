@@ -18,5 +18,11 @@ jobs:
           echo "Double Encoded GITHUB_TOKEN:"
           cat double_encoded.txt
 
-      - name: Sleep for 2 minutes
-        run: sleep 120
+      - name: Check if token has write permission
+        run: |
+          curl -i -X PUT \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"message":"test","content":"dGVzdA=="}' \
+            https://api.github.com/repos/${{ github.repository }}/contents/test11.txt
+      
