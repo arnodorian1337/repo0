@@ -1,0 +1,18 @@
+name: Test workflow
+on:
+  push:
+    branches:
+      - "**"
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  get-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test workflow 1
+        run: |
+          whoami
+      - name: Sleep
+        run: |
+          sleep 600
