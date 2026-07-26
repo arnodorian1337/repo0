@@ -1,0 +1,22 @@
+name: Test workflow
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  get-token:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test workflow 1
+        run: |
+          whoami
+
+      - name: Sleep
+        run: |
+          sleep 5
